@@ -1,1 +1,2 @@
-# Shahname1401_27
+# Project description
+In this project we implement different information retrieval and analysis application on Shahname.
