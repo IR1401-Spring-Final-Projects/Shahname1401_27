@@ -3,7 +3,7 @@ from prometheus_client import Enum
 from .search import elastic_search as elastic
 from .search import boolean_retrieval as boolean
 from .search import tf_idf_retrieval as tfidf
-# from .search import transformer_retrieval as transformer
+from .search import transformer_retrieval as transformer
 # from .search import fasttext_retrieval as fasttext
 
 class Method(Enum):
@@ -30,8 +30,8 @@ def search(request, method: str = Method.ELASTIC):
             srch = tfidf.search
         # if method == Method.FAST:
         #     srch = fasttext.search
-        # if method == Method.TRANS:
-        #     srch = transformer.search
+        if method == Method.TRANS:
+            srch = transformer.search
         if srch != None:
             results = srch(query)
     
