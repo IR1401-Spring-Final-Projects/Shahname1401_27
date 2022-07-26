@@ -46,7 +46,7 @@ def search(query, k=10):
     query = preprocess_sent(query)
     query = ' '.join(query)
     ret = es.search(index=INDEX_NAME, query={"match": {'clean_text': query}})
-    scored_docs = [(x['_score'], (x['_source']['actual_text'], x['_source']))
+    scored_docs = [(x['_score'], x['_source']['actual_text'])
                    for x in ret['hits']['hits']]
     scored_docs = sorted(scored_docs, reverse=True)[:min(k, len(scored_docs))]
-    return [doc[1][0] for doc in scored_docs]
+    return [doc[1] for doc in scored_docs]

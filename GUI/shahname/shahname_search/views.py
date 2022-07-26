@@ -4,7 +4,7 @@ from .search import elastic_search as elastic
 from .search import boolean_retrieval as boolean
 from .search import tf_idf_retrieval as tfidf
 from .search import transformer_retrieval as transformer
-# from .search import fasttext_retrieval as fasttext
+from .search import fasttext_retrieval as fasttext
 
 class Method(Enum):
     ELASTIC = "elastic"
@@ -28,8 +28,8 @@ def search(request, method: str = Method.ELASTIC):
             srch = boolean.search
         if method == Method.TFIDF:
             srch = tfidf.search
-        # if method == Method.FAST:
-        #     srch = fasttext.search
+        if method == Method.FAST:
+            srch = fasttext.search
         if method == Method.TRANS:
             srch = transformer.search
         if srch != None:
