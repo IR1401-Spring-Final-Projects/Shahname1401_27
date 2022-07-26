@@ -1,0 +1,98 @@
+<html>
+
+<head>
+
+    <title>Search</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="navbar" dir="rtl">
+            <nav class="navbar navbar-expand-lg navbar-dark" style="background: rgb(61,73,133);" text-align="right" direction="rtl">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">جست‌وجو در شاهنامه</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/search/boolean">
+                                    <i class="bi bi-house-fill"></i>
+                                    Boolean</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/search/tfidf">
+                                    <i class="bi bi-clipboard-data"></i>
+                                    TF-IDF</a>
+                            </li>
+                            <li class="nav-item">
+    
+                                <a class="nav-link" aria-current="page" href="/search/transformer">
+                                    <i class="bi bi-people-fill"></i>
+                                    Transformer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/search/fasttext">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    Fasttext</a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/search/elastic">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    Elasticsearch</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+    </div>
+<div class="container">
+<div  dir="rtl">
+
+    <br/>
+
+    <form action="{% url 'search' method%}" class="form-inline" method="get">
+
+       <div class="form-group mb-8">
+
+            <h1>جست‌وجو در ابیات بیت:</h1>
+
+       </div>
+
+       <div class="form-group mx-sm-3 mb-2">
+
+        <label for="" class="sr-only">search</label>
+
+        <input name="search" type="" class="form-control" id="" placeholder="به نام خداوند جان و خرد">
+
+        </div>
+
+        <button type="submit" class="btn btn-success btn-lg mb-2">جست‌وجو</button>
+
+   </form>
+
+        <br/>
+    ‌‌‌<table text-align="right" direction ="rtl">
+        {% if results %}
+        <tr><th><h2>{{query}}</h2><hr></th></tr>
+        {% for x in results %}
+        <tr><td>{{x}}<hr></td></tr>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+</div>
+
+</body>
+
+</html>
