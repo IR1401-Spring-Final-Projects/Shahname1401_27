@@ -13,7 +13,7 @@ class Method(Enum):
     TRANS = "transformer"
     FAST = "fasttext"
 
-def search(request, method: str = Method.ELASTIC):
+def search(request, method: str = Method.BOOL):
     results = []
     query = None
     if request.method == "GET":

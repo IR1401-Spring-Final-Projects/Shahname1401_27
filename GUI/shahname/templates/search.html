@@ -2,7 +2,7 @@
 
 <head>
 
-    <title>Search</title>
+    <title>جست‌وجو با روش {{method}}</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -23,29 +23,28 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
+                            <li class="nav-item {% if method == 'boolean' %} active {% endif %}">
                                 <a class="nav-link" aria-current="page" href="/search/boolean">
                                     <i class="bi bi-house-fill"></i>
                                     Boolean</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {% if method == 'tfidf' %} active {% endif %}">
                                 <a class="nav-link" aria-current="page" href="/search/tfidf">
                                     <i class="bi bi-clipboard-data"></i>
                                     TF-IDF</a>
                             </li>
-                            <li class="nav-item">
-    
+                            <li class="nav-item {% if method == 'transformer' %} active {% endif %}">
                                 <a class="nav-link" aria-current="page" href="/search/transformer">
                                     <i class="bi bi-people-fill"></i>
                                     Transformer</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item {% if method == 'fasttext' %} active {% endif %}">
                                 <a class="nav-link" aria-current="page" href="/search/fasttext">
                                     <i class="bi bi-box-arrow-right"></i>
                                     Fasttext</a>
                             </li>
                             
-                            <li class="nav-item">
+                            <li class="nav-item {% if method == 'elastic' %} active {% endif %}">
                                 <a class="nav-link" aria-current="page" href="/search/elastic">
                                     <i class="bi bi-box-arrow-right"></i>
                                     Elasticsearch</a>
@@ -64,7 +63,7 @@
 
        <div class="form-group mb-8">
 
-            <h1>جست‌وجو در ابیات بیت:</h1>
+            <h1>جست‌وجو در ابیات:</h1>
 
        </div>
 
