@@ -5,7 +5,7 @@ from .search import boolean_retrieval as boolean
 from .search import tf_idf_retrieval as tfidf
 from .search import transformer_retrieval as transformer
 from .search import fasttext_retrieval as fasttext
-
+from .search import classification
 class Method(Enum):
     ELASTIC = "elastic"
     BOOL = 'boolean'
@@ -19,11 +19,9 @@ def search(request, method: str = Method.BOOL):
     if request.method == "GET":
         query = request.GET.get('search')
         if query == '':
-            query = 'None'
+            query = None
     srch = None
     if query != None:
-        if method == Method.ELASTIC:
-            srch = elastic.search
         if method == Method.BOOL:
             srch = boolean.search
         if method == Method.TFIDF:
@@ -32,7 +30,23 @@ def search(request, method: str = Method.BOOL):
             srch = fasttext.search
         if method == Method.TRANS:
             srch = transformer.search
+        if method == Method.ELASTIC:
+            srch = elastic.search
         if srch != None:
             results = srch(query)
     
     return render(request, 'search.html', {'query': query, 'results': results, 'method': method})
+
+
+def classify(request):
+    result = None
+    query = None
+    if request.method == "GET":
+        query = request.GET.get('search')
+        if query == '':
+            query = None
+
+    if query != None:
+        result = classification.respond_to_query(query)
+
+    return render(request, 'classify.html', {'query': query, 'result': result})
